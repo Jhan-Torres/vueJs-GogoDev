@@ -6,128 +6,129 @@
 <!-- La etiqueta SCRIPT contiene la logica de funcionamiento y los datos de nuestros componentes -->
 <script setup>
 
-  import PostContainer from './components/PostContainer.vue';
+import PostContainer from './components/PostContainer.vue';
 
-  import CounterOption from './components/CounterOption.vue';
-  import CounterComposition from './components/CounterComposition.vue';
-  import ExampleSelective from './components/ExampleSelective.vue';
-  import ExampleFor from './components/ExampleFor.vue';
-  import ClassBind from './components/ClassBind.vue';
-  import ClassVOn from './components/ClassV-on.vue';
-  import ModelForm from './components/ModelForm.vue';
+import CounterOption from './components/CounterOption.vue';
+import CounterComposition from './components/CounterComposition.vue';
+import ExampleSelective from './components/ExampleSelective.vue';
+import ExampleFor from './components/ExampleFor.vue';
+import ClassBind from './components/ClassBind.vue';
+import ClassVOn from './components/ClassV-on.vue';
+import ModelForm from './components/ModelForm.vue';
 
-  //Ciclo de vida de un componente
-  import CycleOption from './components/CycleOption.vue';
+//Ciclo de vida de un componente
+import CycleOption from './components/CycleOption.vue';
 
-  //Uso de props y emits
-  import PostListPadre from './components/PostListPadre.vue';
+//Uso de props y emits
+import PostListPadre from './components/PostListPadre.vue';
 
-  //Datos computados
-  import ComputedExample from './components/ComputedExample.vue';
-  import ExerciseComputed from './components/ExerciseComputed.vue';
+//Datos computados
+import ComputedExample from './components/ComputedExample.vue';
+import ExerciseComputed from './components/ExerciseComputed.vue';
 
-  const name = 'Vue dinamico';
-  const colorAzul = 'color: blue';
-  const arrayColores = ['Blue', 'Red', 'Green'];
-  const activo = false;
-  const encendido = true;
+const name = 'Vue dinamico';
+const colorAzul = 'color: blue';
+const arrayColores = ['Blue', 'Red', 'Green'];
+const activo = false;
+const encendido = true;
 
-  const arrayFrutas = ["pear", "apple", "strawberry"];
+const arrayFrutas = ["pear", "apple", "strawberry"];
 
-  const arrayObjetos = [
-    {
-      name: "Manzana",
-      price: "$1.00",
-      description: "Una manzana",
-      stock: 0
-    },
-    {
-      name: "Pera",
-      price: "$2.00",
-      description: "Una pera",
-      stock: 10
-    },
-    {
-      name: "Naranja",
-      price: "$3.00",
-      description: "Una naranja",
-      stock: 20
-    }
-  ];
-
-  //METHODS
-  const handleClick = (boton) => {
-    console.log(`Click... en ${boton}` );
+const arrayObjetos = [
+  {
+    name: "Manzana",
+    price: "$1.00",
+    description: "Una manzana",
+    stock: 0
+  },
+  {
+    name: "Pera",
+    price: "$2.00",
+    description: "Una pera",
+    stock: 10
+  },
+  {
+    name: "Naranja",
+    price: "$3.00",
+    description: "Una naranja",
+    stock: 20
   }
+];
 
-  //REACTIVIDAD CON REF  -- EJERCICIO DE CONTADOR
-    import { ref, computed } from 'vue';
+//METHODS
+const handleClick = (boton) => {
+  console.log(`Click... en ${boton}`);
+}
 
-    //Creamos una varibale reactiva
-    const counter = ref(0) //ref() --> dentro de los partentesis irá el valor inicial que le queremos proporcionar
+//REACTIVIDAD CON REF  -- EJERCICIO DE CONTADOR
+import { ref, computed } from 'vue';
 
-    const increment = () => {
-      //mutamos el valor a traves de .value
-      counter.value++; //Si trabajamos dentro de SCRIPT, debemos acceder al valor de la variable con .value
+//Creamos una varibale reactiva
+const counter = ref(0) //ref() --> dentro de los partentesis irá el valor inicial que le queremos proporcionar
+
+const increment = () => {
+  //mutamos el valor a traves de .value
+  counter.value++; //Si trabajamos dentro de SCRIPT, debemos acceder al valor de la variable con .value
+}
+
+const reduce = () => counter.value--;
+
+const revalue = () => (counter.value = 0);
+
+/*Las propiedades computadas (COMPUTED) nos sirven para generar calculos en nuestros componentes, por ejemplo no se recomienda colocar  
+demasiada lógica en nuestras plantillas HTML, ya que dificulta la interpretación de nuestros componentes */
+
+//Por eso, para la lógica compleja que incluye datos reactivos, se recomienda utilizar una propiedad calculada:
+
+const classCounter = computed(() => {
+  if (counter.value == 0) {
+    return 'zero';
+  }
+  return counter.value > 0 ? 'positive' : 'negative'
+})
+
+/* En lugar de una propiedad calculada, podemos definir la misma función como un método. Para el resultado final, los dos enfoques son 
+exactamente iguales. Sin embargo, la diferencia es que las propiedades calculadas se almacenan en caché en función de sus 
+dependencias reactivas. */
+
+/* Una propiedad calculada solo se volverá a evaluar cuando algunas de sus dependencias reactivas hayan cambiado. */
+
+//REACTIVIDAD CON REF  -- EJERCICIO DE CONTADOR
+
+//PRACTICA CONTADOR CON ARRAY
+
+const arrayCounter = ref([]);
+
+const addNumber = () => {
+  arrayCounter.value.push(counter.value);
+}
+
+const buttonFavDisabled = computed(() => {
+  for (const number of arrayCounter.value) {
+    if (number === counter.value) {
+      return 'false';
     }
+  }
+})
 
-    const reduce = () => counter.value--;
+const deleteNumber = () => {
+  arrayCounter.value = arrayCounter.value.filter(number => number != counter.value);
+}
 
-    const revalue = () => (counter.value = 0);
-
-    /*Las propiedades computadas (COMPUTED) nos sirven para generar calculos en nuestros componentes, por ejemplo no se recomienda colocar  
-    demasiada lógica en nuestras plantillas HTML, ya que dificulta la interpretación de nuestros componentes */
-
-    //Por eso, para la lógica compleja que incluye datos reactivos, se recomienda utilizar una propiedad calculada:
-
-    const classCounter = computed(() => {
-      if (counter.value == 0) {
-        return 'zero';
-      }
-      return counter.value > 0 ?  'positive' : 'negative'
-    })
-
-    /* En lugar de una propiedad calculada, podemos definir la misma función como un método. Para el resultado final, los dos enfoques son 
-    exactamente iguales. Sin embargo, la diferencia es que las propiedades calculadas se almacenan en caché en función de sus 
-    dependencias reactivas. */
-
-    /* Una propiedad calculada solo se volverá a evaluar cuando algunas de sus dependencias reactivas hayan cambiado. */
-
-  //REACTIVIDAD CON REF  -- EJERCICIO DE CONTADOR
-
-  //PRACTICA CONTADOR CON ARRAY
-
-    const arrayCounter = ref([]);
-
-    const addNumber = () => {
-      arrayCounter.value.push(counter.value);
-    }
-
-    const buttonFavDisabled = computed (() => {
-      for (const number of arrayCounter.value) {
-        if (number === counter.value) {
-          return 'false';
-        }
-      }
-    })
-
-    const deleteNumber = () => {
-      arrayCounter.value = arrayCounter.value.filter(number => number != counter.value);
-    }
-
-  //PRACTICA CONTADOR CON ARRAY
+//PRACTICA CONTADOR CON ARRAY
 
 </script>
 
 <!-- etiqueta template: renderiza todo el html que tenemos en este archivo -->
-<template> 
-  <h1>Hola {{ name.toUpperCase() }}</h1> <!-- {{  }} Para traer el valor de la variable en las etiquetas SCRIPT y tambien permite expresiones de JS -->
+<template>
+  <h1>Hola {{ name.toUpperCase() }}</h1>
+  <!-- {{  }} Para traer el valor de la variable en las etiquetas SCRIPT y tambien permite expresiones de JS -->
   <h2>Colores {{ arrayColores }}</h2> <!-- Devuelve el contenido del Array pero en texto -->
-  
+
   <!-- v-bind: (abreviado con ":") PERMITE USAR VARIABLES EN LOS ATRIBUTOS DE LAS ETIQUETAS -->
   <h2 :style="colorAzul"> AZUL </h2> <!-- PARA traer una variable de CSS de las etiquetas SCRIPT -->
 
-  <h2 :style="`color: ${arrayColores[2]}`" >ArrayColores</h2>
+  <h2 :style="`color: ${arrayColores[2]}`">ArrayColores</h2>
 
   <h2>
     {{ activo ? 'Toy activao' : 'No toy activao' }} <!-- Tambien podemos usar el operador ternario -->
@@ -138,7 +139,8 @@
   <h2 v-else>NO TOY ENCENDIDO</h2>
 
   <!-- v-show    PARA MOSTRAR O NO EL ELEMENTO -->
-  <h3 v-show="true">mostrar v-show</h3> <!-- se mustra el elemento, sino se despliega style="display:none;" como atributo del elemento -->
+  <h3 v-show="true">mostrar v-show</h3>
+  <!-- se mustra el elemento, sino se despliega style="display:none;" como atributo del elemento -->
 
   <!-- v-for    para iterar sobre una lista de elementos -->
   <ul>
@@ -157,7 +159,8 @@
 
       <!-- Para recorrer el objeto con v-for -->
       <ul>
-        <li v-for="(value, property, index) in objeto" :key="objeto.name"> <!-- para recorrer objetos, es diferente a recorrer arrays, aqui el
+        <li v-for="(value, property, index) in objeto" :key="objeto.name">
+          <!-- para recorrer objetos, es diferente a recorrer arrays, aqui el
                                                                     1er parametro es el valor de la propiedad(value), el 2do elemento
                                                                     es el nombre de la propiedad(property) y el 3er elemento es el index-->
           {{ property }}: {{ value }} - posición: {{ index }}
@@ -173,14 +176,15 @@
     <template v-for="objeto in arrayObjetos" :key="objeto.name"> <!-- hacemos el v-for en un TEMPLATE, es decir, lo estamos realizando 
                                                                   sobre algo que es como transparente y lo que esta en su interior
                                                                   del v-for va a ser lo que se va a recorrer -->
-      <li v-if="objeto.stock > 0">    
+      <li v-if="objeto.stock > 0">
         {{ objeto }}
       </li>
     </template>
   </ul>
 
   <!-- v-on (abrevidado con "@")  PARA ESCUCHAR EVENTOS DOM Y EJECUTAR JS CUANDO SE ACTIVAN-->
-  <button v-on:click="handleClick"> <!-- Cuando no hay parametros, podemos obviar los parentesis de la funcion (handleClick) -->
+  <button v-on:click="handleClick">
+    <!-- Cuando no hay parametros, podemos obviar los parentesis de la funcion (handleClick) -->
     Activar 1
   </button>
 
@@ -199,15 +203,15 @@
   <hr>
 
   <div class="container text-center">
-    <h2 :class="classCounter">  <!-- :class   PARA USAR CLASES DINAMICAS -->
-    {{ counter }}
+    <h2 :class="classCounter"> <!-- :class   PARA USAR CLASES DINAMICAS -->
+      {{ counter }}
     </h2>
     <button @click="increment" class="btn btn-success m-1">+1</button>
     <button @click="reduce" class="btn btn-danger m-1">-1</button>
     <button @click="revalue" class="btn btn-secondary m-1">Reiniciar</button>
     <button @click="deleteNumber" class="btn btn-warning m-1">Eliminar</button>
     <!-- EJERCICIO CONTADOR -->
-  
+
     <!-- PRACTICA CONTADOR CON ARRAY -->
     <button @click="addNumber" :disabled="buttonFavDisabled" class="btn btn-primary m-1">Fav</button>
     <h3>FAVS -> {{ arrayCounter }} </h3>
@@ -219,17 +223,17 @@
   <!-- CRONOLOGIA GOGODEV: -->
 
   <!-- POST-CONTAINER -->
-  <PostContainer/>
+  <PostContainer />
 
 
   <!-- FORMATOS PARA TRABAJO EN VUE: OPTION API (version 1 y 2) vs COMPOSITION API (version 3) -->
-    <!-- OPTION API: Constituye un objeto que describe el contenido de una forma sencilla de entender -->
-    <!-- COMPOSTION API: Funciona de una forma mas enfoca a HOOKS y da mayor control -->
+  <!-- OPTION API: Constituye un objeto que describe el contenido de una forma sencilla de entender -->
+  <!-- COMPOSTION API: Funciona de una forma mas enfoca a HOOKS y da mayor control -->
   <!-- CONTADOR CON OPTION API: -->
-  <CounterOption/>
+  <CounterOption />
 
   <!-- CONTADOR CON COMPOSITION API: -->
-  <CounterComposition/>
+  <CounterComposition />
 
 
   <!-- DIRECTIVAS -->
@@ -240,36 +244,36 @@
     aspecto, etc. 
    -->
   <!-- DIRECTIVAS SELECTIVAS (RENDERIZADO CONDICIONAL) -->
-  <ExampleSelective/>
+  <ExampleSelective />
 
 
   <!-- BUCLE for -->
-  <ExampleFor/>
+  <ExampleFor />
 
 
   <!-- V-BIND -->
-  <ClassBind/>
+  <ClassBind />
 
 
   <!-- V-ON -->
-   <ClassVOn/>
+  <ClassVOn />
 
 
   <!-- BINDEO BIDIRECCIONAL -->
-  <ModelForm/>
+  <ModelForm />
 
 
   <!-- CICLO DE VIDA DE UN COMPONENTE CON OPTION API -->
-  <CycleOption/>
+  <CycleOption />
 
 
   <!-- USO DE PROPS Y EMITS -->
-  <PostListPadre/>
+  <PostListPadre />
 
 
   <!-- DATOS COMPUTADOS -->
-  <ComputedExample/>
-  <ExerciseComputed/>
+  <ComputedExample />
+  <ExerciseComputed />
 
   <hr>
 
