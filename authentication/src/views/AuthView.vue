@@ -9,7 +9,7 @@
 			<label for="exampleInputPassword1" class="form-label">Password</label>
 			<input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary" @click.prevent="handleAuthUser">Submit</button>
 	</form>
 </template>
 
@@ -19,5 +19,14 @@ import { ref } from 'vue';
 let email = ref('');
 let password = ref('');
 
+//generar un nuevo servicio de auth y llamar a la funcion del login.
+import AuthService from '../services/AuthService';
+
+async function handleAuthUser() {
+	const auth = new AuthService();
+	const succes = await auth.login(email.value, password.value);
+
+	alert(succes ? 'login correct' : 'error login');
+}
 
 </script>

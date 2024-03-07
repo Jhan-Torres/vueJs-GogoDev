@@ -38,11 +38,14 @@ class AuthService {
                 return false;
             }
 
-            this.jwt = result.data.access_token //.data.access_token -> debido al tipo de respuesta que nos da el servicio
+            this.jwt.value = result.data.access_token //.data.access_token -> debido al tipo de respuesta que da el servicio del backend
             return true;
 
         } catch (error) {
             console.log(error);
+            return false;
         }
     }
 }
+
+export default AuthService
