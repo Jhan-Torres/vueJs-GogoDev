@@ -24,13 +24,22 @@ const decrement = () => {
 </script>
 
 <template>
-  <h2>
-    Counter: {{ counter }}
-  </h2>
 
-  <h2>
+  <!-- 
+  $slots.default: si el componente tiene al menos un slot, 
+  este estará disponible en $slots.default
+  -->
+  <slot 
+    v-if="$slots.default"  
+  />
+
+  <h3>
+    Counter: {{ counter }}
+  </h3>
+
+  <h3>
     Counter x2 = {{ times2 }}
-  </h2>
+  </h3>
 
   <button 
     @click="increment"
