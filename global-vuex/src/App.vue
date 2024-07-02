@@ -1,7 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import FirstCounterExample from './components/FirstCounterExample.vue';
 </script>
 
 <template>
-  <HelloWorld />
+  <FirstCounterExample />
 </template>
