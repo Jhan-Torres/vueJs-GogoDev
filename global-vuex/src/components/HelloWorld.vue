@@ -1,44 +1,46 @@
 <script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
+import store from '@/store';
+import { computed } from 'vue';
+
+const counter = computed(() => {
+  //leer el counter desde el "store"
+  return store.state.counter
 })
+
+const times2 = computed(() => {
+  //leer el getter "times2" desde el "store"
+  return store.getters.times2
+})
+
+const increment = () => {
+  //usar mutation "setCounter" desde el store
+  //para hacer una mutacion, lo hacemos a través de "commit"
+  store.commit('setCounter', counter.value + 1)
+}
+
+const decrement = () => {
+  store.commit('setCounter', counter.value - 1)
+}
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+  <h2>
+    Counter: {{ counter }}
+  </h2>
+
+  <h2>
+    Counter x2 = {{ times2 }}
+  </h2>
+
+  <button 
+    @click="increment"
+  >
+    Add
+  </button>
+
+  <button 
+    @click="decrement"
+  >
+    Reduce
+  </button>
 </template>
-
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-</style>

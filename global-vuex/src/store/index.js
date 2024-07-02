@@ -15,7 +15,7 @@ export default createStore({
   mutations: { 
     //métodos equivalentes a los setter, para modificar los "states", 
     //solo permiten acciones síncronas.
-    setCounter(state, value) {
+    setCounter(state, value) { //(elemento a modificar, valores que necesita)
       state.counter = value;
     },
   },
