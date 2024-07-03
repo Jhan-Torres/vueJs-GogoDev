@@ -3,13 +3,24 @@ import { defineStore } from 'pinia'
 
 //Setup stores syntax
 export const useCounterStore = defineStore('counter', () => {
+  const defaultValue = ref('default')
   const count = ref(0)
   const doubleCount = computed(() => count.value * 2)
   function increment() {
     count.value++
   }
 
-  return { count, doubleCount, increment }
+  const aMethod = () => {
+    return 'i am a method'
+  }
+
+  return { 
+    count, 
+    doubleCount, 
+    increment,
+    defaultValue,
+    aMethod
+  }
 })
 
 /*
