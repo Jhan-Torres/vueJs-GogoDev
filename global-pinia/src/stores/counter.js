@@ -12,7 +12,7 @@ export const useCounterStore = defineStore('counter', () => {
 })
 
 /*
-Another way to export an store:
+OPTION API way to use pinia:
 export const useCounterStore = defineStore('counter', {
   state: () => {
     return {
