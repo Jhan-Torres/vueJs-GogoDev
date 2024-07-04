@@ -20,12 +20,12 @@ const {
 
 const cardTransformation = computed(() => {
   const MAX_ROTATION = 6
-  const rotationX = (MAX_ROTATION/2 - (elementY.value/elementHeight.value)*MAX_ROTATION).toFixed(2);
+  const rotationX = ((MAX_ROTATION/2) - ((elementY.value/elementHeight.value)*MAX_ROTATION)).toFixed(2);
 
-  const rotationY = ((elementX.value/elementWidth.value)*MAX_ROTATION - MAX_ROTATION/2).toFixed(2);
+  const rotationY = (((elementX.value/elementWidth.value)*MAX_ROTATION) - (MAX_ROTATION/2)).toFixed(2);
 
   return isOutside.value 
-    ? ''
+    ? `perspective(${elementWidth.value}px) rotateX(0deg) rotateY(0deg)`
     : `perspective(${elementWidth.value}px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`
 })
 
@@ -40,7 +40,10 @@ const msg = aMethod();
 </script>
 
 <template>
-  <div class="card">
+  <div 
+    class="card"
+    ref="cardTarget"
+  >
     <h1>Hola mundo from PINIA</h1>
     <h2>
       Counter: {{ counterStore.count }}
@@ -61,7 +64,7 @@ const msg = aMethod();
   </div>
 </template>
 
-<style scoped>
+<style>
 .card {
   border: 1px solid bisque;
   padding: 2rem;
