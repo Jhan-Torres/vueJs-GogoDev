@@ -5,9 +5,11 @@ import { useCounterStore } from './stores/counter';
 
 //vue-use imports
 import { useMouseInElement } from '@vueuse/core'
+import { onClickOutside } from '@vueuse/core';
 
 //Nodes ref
-const cardTarget = ref(null) 
+const cardTarget = ref(null)
+const modalTarget = ref(null) 
 
 //get variables from vue-use
 const { 
@@ -37,6 +39,11 @@ const { defaultValue } = storeToRefs(counterStore)
 //Extraer una metodo de un store
 const { aMethod } = counterStore
 const msg = aMethod();
+
+//modal
+const isModalOpen = ref(false)
+
+onClickOutside(modalTarget, () => (isModalOpen.value = false))
 </script>
 
 <template>
@@ -62,6 +69,38 @@ const msg = aMethod();
     <h3>default value: {{ defaultValue }}</h3>
     <h3>Method: "{{ msg }}"</h3>
   </div>
+  <br>
+  <h2>
+    Display modal!
+  </h2>
+  <button 
+    @click="isModalOpen = true"
+  >
+    Open modal
+  </button>
+  <Teleport to="#modal">
+    <Transition name="modal">
+      <!-- "name" property above is to replace v-... clase names (see styles scoped below) -->
+      <!-- transition goes here, whenever "isModalOpen" changes, transition gonna display -->
+      <div
+        class="modal-bg"
+        v-if="isModalOpen"
+      >
+        <div 
+          class="modal"
+          ref="modalTarget"
+        >
+          <p>Click outside this modal to close it</p>
+          <button
+            @click="isModalOpen = false"
+            class="close-btn"
+          >
+            X
+          </button>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <style>
@@ -72,5 +111,64 @@ const msg = aMethod();
   background-color: #002022;  
   transform: v-bind(cardTransformation);
   transition: transform 0.25s ease-out;
+}
+
+.modal-bg {
+  /* Modal to the viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* Darken the screen */
+  background-color: rgba(0, 0, 0, 0.5);
+
+  /* Center the modal itself */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  /* needed the position button */
+  position: relative;
+
+  /* aesthetic purposes */
+  background: white;
+  padding: 50px 100px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 5px 2px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.modal .close-btn {
+  /* put button in the top right */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  /* remove default styles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal .close-btn:hover {
+  transform: scale(110%);
+  transition: 150ms;
+  color: red;
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.25s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
 }
 </style>
