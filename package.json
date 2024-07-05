@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@vueuse/core": "^10.11.0"
+    "@vueuse/core": "^10.11.0",
+    "vue-cookies": "^1.8.4"
   }
 }
