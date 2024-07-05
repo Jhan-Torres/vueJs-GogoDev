@@ -20,4 +20,17 @@ app.use(VueCookies, {
   // sameSite: '', //configuraciones sameSite de las cookies
 })
 
+/*
+Guardar una cookie:
+  $cookies.set('auth', value, expires, path, domain, secure, sameSite)
+Obtener una cookie:
+  $cookies.get('auth')
+Eliminar una cookie:
+  $cookies.remove('auth')
+Verificar si exite una cookie:
+  $cookies.isKey('auth')
+Todas las cookies guardadas:
+  $cookies.keys()
+*/
+
 app.mount('#app')
