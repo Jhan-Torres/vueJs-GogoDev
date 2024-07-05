@@ -39,8 +39,5 @@ const sendToServer = async () => {
       Enviar nota al servidor
     </button>
   </div>
+  <router-view />
 </template>
-
-<style scoped>
-
-</style>
