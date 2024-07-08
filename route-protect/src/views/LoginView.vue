@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <div>Login</div>
+  <div>
+    <h1>Login view</h1>
+  </div>
 </template>
 
 <style scoped>
