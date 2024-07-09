@@ -1,0 +1,52 @@
+<script setup>
+defineProps({
+  item: {
+    type: Object,
+    required: true
+  }
+})
+</script>
+
+<template>
+  <section
+    class="w-60 my-5 mx-2 rounded-lg shadow-md shadow-gray-400"
+  >
+    <div class="flex justify-center w-full">
+      <img
+        :src="item.image"
+        alt="product image"
+        class="object-contain h-72 img-custom-gradient hover:scale-110 duration-200"
+      >
+    </div>
+    <div class="p-2">
+      <div class="flex justify-end">
+        <span 
+          class="text-[#f2ece4] bg-[#363234] text-sm px-4 py-0.5 rounded-xl font-semibold"
+        >
+          {{ item.category }}
+        </span>
+      </div>
+      <h2
+        class="text-[#4A1F43] font-semibold text-lg my-4 truncate"
+      >
+        {{ item.title }}
+      </h2>
+      <button 
+        class="bg-[#4A1F43] py-1 px-5 w-full hover:bg-[#5f2c57] hover:scale-105 duration-150 rounded-md"
+      >
+        <span class="text-white font-bold tracking-wide">
+          Detalles
+        </span>
+      </button>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.img-custom-gradient {
+  mask-image: linear-gradient(
+    black 95%,
+    transparent
+  );
+}
+</style>
