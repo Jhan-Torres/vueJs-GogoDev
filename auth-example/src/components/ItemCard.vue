@@ -31,13 +31,18 @@ defineProps({
       >
         {{ item.title }}
       </h2>
-      <button 
-        class="bg-[#4A1F43] py-1 px-5 w-full hover:bg-[#5f2c57] hover:scale-105 duration-150 rounded-md"
-      >
-        <span class="text-white font-bold tracking-wide">
-          Detalles
-        </span>
-      </button>
+      <div class="flex justify-center">
+        <RouterLink
+          :to="{ name: 'product-detail', params: { id: item.id } }"
+          class="bg-[#4A1F43] py-1.5 px-20 hover:bg-[#5f2c57] hover:scale-105 duration-150 rounded-md"
+        >
+          <span 
+            class="text-white font-bold tracking-wide"
+          >
+            Detalles
+          </span>
+        </RouterLink>
+      </div>
     </div>
   </section>
 </template>

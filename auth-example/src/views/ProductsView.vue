@@ -16,7 +16,6 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1>Products View</h1>
   <section
     class="flex flex-wrap justify-around"
   >
