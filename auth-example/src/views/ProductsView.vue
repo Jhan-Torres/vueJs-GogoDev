@@ -19,7 +19,7 @@ onMounted(() => {
   <section
     class="flex flex-wrap justify-around"
   >
-    <ItemCard 
+    <ItemCard
       v-for="product in products"
       :key="product.id"
       :item="product"
