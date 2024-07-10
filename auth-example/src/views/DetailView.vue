@@ -29,7 +29,7 @@ onMounted(() => {
       >
     </section>
 
-    <section class="md:max-w-[35%]">
+    <section class="px-3 md:max-w-[35%]">
       <h1
         class="text-2xl font-semibold text-[#3b161d] text-center"
       >
@@ -47,7 +47,7 @@ onMounted(() => {
           {{ product.category }}
         </span>
       </div>
-      <p>
+      <p class="px-2">
         {{ product.description }}
       </p>
       <button
