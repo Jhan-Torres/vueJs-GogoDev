@@ -18,8 +18,8 @@ onMounted(() => {
   <section
     class="bg-[#cecee2] p-3 height-fixed text-2xl"
   >
-    <h1 class="text-4xl text-center">
-      My cart
+    <h1 class="text-4xl text-center font-semibold">
+      My cart ({{ myCart.length }})
     </h1>
     <div class="flex flex-wrap justify-center mt-4 md:justify-evenly ">
       <section
@@ -46,7 +46,7 @@ onMounted(() => {
           class="flex justify-between"
         >
           <button
-            class="text-base font-bold text-white bg-red-500 px-10 py-0.5 rounded-md"
+            class="text-base font-bold text-white bg-red-600 px-10 py-0.5 rounded-md hover:bg-red-500"
           >
             Delete
           </button>
