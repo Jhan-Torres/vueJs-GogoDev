@@ -51,15 +51,18 @@ onMounted(() => {
         {{ product.description }}
       </p>
       <button
-        class="w-full bg-[#488291] text-[#000000] mt-4 py-1.5 font-bold rounded-lg"
-      >
+        class="w-full bg-[#488291] text-[#000000] my-4 py-1.5 font-bold rounded-lg"
+        >
         Add to cart
       </button>
-      <button
-        class="w-full bg-[#363234] text-[#c8d7d2] mt-2 py-1.5 font-bold rounded-lg"
+    <div class="flex justify-center">
+      <RouterLink
+        :to="{ name: 'cart' }"
+        class="text-[#363234] underline font-bold rounded-lg"
       >
-        View my cart
-      </button>
+        Go to my cart
+      </RouterLink>
+    </div>
     </section>
   </section>
 </template>
