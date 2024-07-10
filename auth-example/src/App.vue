@@ -37,7 +37,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <footer
     class="bg-[#1F2D40] h-14 text-gray-100 flex items-center justify-center"
   >
-    <p>By <a href="https://fakestoreapi.com/docs" target="_blank">fakestoreapi</a></p>
+    <p>By <a href="https://fakestoreapi.com/docs" target="_blank" class="underline">fakestoreapi</a></p>
   </footer>
 </template>
 

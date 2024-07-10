@@ -31,7 +31,7 @@ onMounted(() => {
 
     <section class="md:max-w-[35%]">
       <h1
-        class="text-xl font-semibold text-[#3b161d] text-center"
+        class="text-2xl font-semibold text-[#3b161d] text-center"
       >
         {{ product.title }}  
       </h1>
@@ -42,7 +42,7 @@ onMounted(() => {
           ${{ product.price }}
         </span>
         <span
-          class="bg-[#325068] text-[#f4b346] py-1 px-5 rounded-lg"
+          class="bg-[#325068] text-[#f4b346] py-0.5 px-5 rounded-lg"
         >
           {{ product.category }}
         </span>
