@@ -8,37 +8,38 @@
       <div class="w-full rounded-lg shadow bg-gray-800 max-w-screen-sm">
         <div class="px-4 py-6 space-y-4 md:space-y-6 md:p-8">
           <h1 class="text-lg font-bold leading-tight tracking-tight text-white md:text-2xl">
-            Log in to your account
+            Create an account
           </h1>
           <p class="text-blue-200">
-            Don't have an account yet? 
+            Have an account already? 
             <RouterLink
-              :to="{ name: 'signup' }"
-              class="text-blue-400 underline">
-              Sign Up
+              :to="{ name: 'login' }"
+              class="text-blue-400 underline"
+            >
+              Log in
             </RouterLink>
           </p>
           <form class="space-y-4 md:space-y-6">
-            <label 
-              class="block mb-2 text-sm font-medium text-white"
-            >
+            <label class="block mb-2 text-sm font-medium text-white">
               Your email
               <input 
-                type="email" 
-                name="email" 
-                id="email" 
+                type="email"
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
                 placeholder="name@company.com" 
                 required="true">
             </label>
-            <label 
-              class="block mb-2 text-sm font-medium text-white"
-            >
+            <label class="block mb-2 text-sm font-medium text-white">
               Password
               <input 
-                type="password" 
-                name="password" 
-                id="password" 
+                type="password"
+                placeholder="••••••••" 
+                class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
+                required="true">
+            </label>
+            <label class="block mb-2 text-sm font-medium text-white">
+              Confirm password
+              <input 
+                type="password"
                 placeholder="••••••••" 
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
                 required="true">
@@ -46,7 +47,7 @@
             <button 
               class="w-full bg-[#4870A1] rounded-lg px-5 py-2.5">
               <span class="text-xl font-bold text-white">
-                Log In
+                Sign In
               </span>
             </button>
           </form>
