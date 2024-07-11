@@ -22,13 +22,13 @@
             <label 
               class="block mb-2 text-sm font-medium text-white"
             >
-              Your email
-              <input 
+              Username
+              <input
                 type="email" 
                 name="email" 
                 id="email" 
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
-                placeholder="name@company.com" 
+                placeholder="example:name_007"
                 required="true">
             </label>
             <label 

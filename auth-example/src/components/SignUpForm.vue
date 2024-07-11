@@ -21,11 +21,11 @@
           </p>
           <form class="space-y-2">
             <label class="block mb-2 text-sm font-medium text-white">
-              Your full name
+              Username
               <input 
                 type="email"
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
-                placeholder="name@company.com" 
+                placeholder="example:name_007" 
                 required="true">
             </label>
             <label class="block mb-2 text-sm font-medium text-white">
