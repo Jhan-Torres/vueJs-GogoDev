@@ -4,9 +4,9 @@
 
 <template>
   <section class="bg-[#cecee2] height-fixed flex items-center">
-    <div class="flex flex-col items-center justify-center w-full px-2 py-6 mx-auto">
+    <div class="flex flex-col items-center justify-center w-full px-2 py-4 mx-auto">
       <div class="w-full rounded-lg shadow bg-gray-800 max-w-screen-sm">
-        <div class="px-4 py-6 space-y-4 md:space-y-6 md:p-8">
+        <div class="p-6 space-y-4">
           <h1 class="text-lg font-bold leading-tight tracking-tight text-white md:text-2xl">
             Create an account
           </h1>
@@ -19,7 +19,15 @@
               Log in
             </RouterLink>
           </p>
-          <form class="space-y-4 md:space-y-6">
+          <form class="space-y-2">
+            <label class="block mb-2 text-sm font-medium text-white">
+              Your full name
+              <input 
+                type="email"
+                class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
+                placeholder="name@company.com" 
+                required="true">
+            </label>
             <label class="block mb-2 text-sm font-medium text-white">
               Your email
               <input 
