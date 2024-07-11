@@ -39,7 +39,7 @@ defineProps({
           <span 
             class="text-white font-bold tracking-wide"
           >
-            Detalles
+            Details
           </span>
         </RouterLink>
       </div>
