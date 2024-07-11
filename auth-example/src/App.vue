@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header class="bg-[#1F2D40]">
+  <header class="bg-[#1F2D40] px-10 flex items-center justify-between">
     <nav 
       class="flex justify-center items-center font-semibold h-20"
     >
@@ -26,6 +26,11 @@ import { RouterLink, RouterView } from 'vue-router'
         Cart
       </RouterLink>
     </nav>
+    <button class="bg-[#5d8dc7] px-10 py-2 rounded-lg hover:bg-[#5084C4]">
+      <span class="text-white font-bold uppercase">
+        Login
+      </span>
+    </button>
   </header>
 
   <main
