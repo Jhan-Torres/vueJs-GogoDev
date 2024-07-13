@@ -1,13 +1,12 @@
 <script setup>
 import ItemCard from '@/components/ItemCard.vue'
 import { onMounted, ref } from 'vue';
+import { useFetch } from '@/composables/useFetch';
 
 const products = ref([]);
 
 const getAllProducts = async () => {
-  const response = await fetch('https://fakestoreapi.com/products')
-
-  products.value = await response.json()
+  products.value = await useFetch('products')
 }
 
 onMounted(() => {
