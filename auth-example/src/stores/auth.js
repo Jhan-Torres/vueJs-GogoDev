@@ -1,35 +1,43 @@
 import { defineStore } from 'pinia'
 import { BASE_URL } from '../../utils/contants'
+import { ref } from 'vue'
 
-export const useAuth = defineStore('auth', () => {
+export const useAuthStore = defineStore('auth', () => {
   //data
-  const token = null
-  const cart = null
+  const token = ref(null)
 
   //methods
-  const registerUser = async (username, email, password) => {
-    const uri = `${BASE_URL}/users`
 
-    const rawResponse = await fetch(uri, {
+  //setToken (value) => {
+    //token.value = value
+  //}
+  const registerUser = async (user) => {
+    const rawResponse = await fetch(`${BASE_URL}/users`, {
       method: 'POST',
       body: JSON.stringify({
-        email,
-        username,
-        password,
+        email: user.email,
+        username: user.username,
+        password: user.password,
       }),
     })
 
     const response = await rawResponse.json()
+
+    if(!response.id) {
+      return 'Error'
+    }
+
+    return 'Success, user logged'
   }
 
-  const loginUser = async (username, password) => {
+  const loginUser = async (user) => {
     const uri = `${BASE_URL}/auth/login`
 
     const rawResponse = await fetch(uri, {
       method: 'POST',
       body: JSON.stringify({
-        username,
-        password,
+        username: user.username,
+        password: user.password,
       }),
     })
 
@@ -37,26 +45,20 @@ export const useAuth = defineStore('auth', () => {
   }
 
   const getProducts = async () => {
-    const uri = `${BASE_URL}/products`
-
-    const rawResponse = await fetch(uri)
+    const rawResponse = await fetch(`${BASE_URL}/products`)
 
     const response = await rawResponse.json()
   }
 
   const getSingleProduct = async (productId) => {
-    const uri = `${BASE_URL}/products/${productId}`
-
-    const rawResponse = await fetch(uri)
+    const rawResponse = await fetch(`${BASE_URL}/products/${productId}`)
 
     const response = await rawResponse.json()
   }
 
   //when diferents user types available
   const addProduct = async (product) => {
-    const uri = `${BASE_URL}/products`
-
-    const rawResponse = await fetch(uri, {
+    const rawResponse = await fetch(`${BASE_URL}/products`, {
       method: 'POST',
       body: JSON.stringify(
         {
