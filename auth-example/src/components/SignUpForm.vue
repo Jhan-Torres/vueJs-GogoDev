@@ -1,5 +1,36 @@
 <script setup>
+import { ref } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useFetch } from '@/composables/useFetch';
+import { useRouter } from 'vue-router';
 
+const store = useAuthStore()
+const user = ref({})
+const router = useRouter()
+
+const registerUser = async () => {
+
+  if(!(user.value.username && user.value.email && user.value.password)) {
+    return
+  }
+
+  const rawResponse = await useFetch('users', {
+    method: 'POST',
+    body: JSON.stringify(user.value)
+  })
+
+  const res = await rawResponse
+
+  if(!res.id) {
+    return
+  }
+
+  console.log("success");
+
+  //static token due api
+  store.setToken('eyJhbGciOiJIUzI1NiIsInR')
+  router.push({name: 'home'})
+}
 </script>
 
 <template>
@@ -11,22 +42,27 @@
             Create an account
           </h1>
           <p class="text-blue-200">
-            Have an account already? 
+            Have an account already?
             <RouterLink
               :to="{ name: 'login' }"
               class="text-blue-400 underline"
             >
-              Log in
+              Log In
             </RouterLink>
           </p>
-          <form class="space-y-2">
+          <form 
+            class="space-y-2"
+            id="signup-form"
+          >
             <label class="block mb-2 text-sm font-medium text-white">
               Username
               <input 
-                type="email"
+                type="text"
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
                 placeholder="example:name_007" 
-                required="true">
+                required="true"
+                v-model="user.username"
+              >
             </label>
             <label class="block mb-2 text-sm font-medium text-white">
               Your email
@@ -34,7 +70,9 @@
                 type="email"
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
                 placeholder="name@company.com" 
-                required="true">
+                required="true"
+                v-model="user.email"
+              >
             </label>
             <label class="block mb-2 text-sm font-medium text-white">
               Password
@@ -42,18 +80,23 @@
                 type="password"
                 placeholder="••••••••" 
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
-                required="true">
+                required="true"
+                v-model="user.password"
+              >
             </label>
             <label class="block mb-2 text-sm font-medium text-white">
-              Confirm password
+              Cofirm password
               <input 
                 type="password"
                 placeholder="••••••••" 
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
-                required="true">
+                required="true"
+              >
             </label>
-            <button 
-              class="w-full bg-[#4870A1] rounded-lg px-5 py-2.5">
+            <button
+              @click="registerUser"
+              class="w-full bg-[#4870A1] rounded-lg px-5 py-2.5"
+            >
               <span class="text-xl font-bold text-white">
                 Sign In
               </span>
