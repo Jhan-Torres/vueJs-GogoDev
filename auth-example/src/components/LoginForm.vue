@@ -22,7 +22,7 @@
             class="space-y-4 md:space-y-6"
             id="login-form"
           >
-            <label 
+            <label
               class="block mb-2 text-sm font-medium text-white"
             >
               Username

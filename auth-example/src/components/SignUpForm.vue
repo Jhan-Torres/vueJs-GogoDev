@@ -9,7 +9,7 @@ const user = ref({})
 const router = useRouter()
 
 const registerUser = async () => {
-
+  //validate fields
   if(!(user.value.username && user.value.email && user.value.password)) {
     return
   }
@@ -24,8 +24,6 @@ const registerUser = async () => {
   if(!res.id) {
     return
   }
-
-  console.log("success");
 
   //static token due api
   store.setToken('eyJhbGciOiJIUzI1NiIsInR')
@@ -94,7 +92,7 @@ const registerUser = async () => {
               >
             </label>
             <button
-              @click="registerUser"
+              @click.prevent="registerUser"
               class="w-full bg-[#4870A1] rounded-lg px-5 py-2.5"
             >
               <span class="text-xl font-bold text-white">
