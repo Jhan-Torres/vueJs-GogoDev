@@ -19,9 +19,9 @@ const registerUser = async () => {
     body: JSON.stringify(user.value)
   })
 
-  const res = await rawResponse
+  const response = await rawResponse
 
-  if(!res.id) {
+  if(!response.id) {
     return
   }
 
