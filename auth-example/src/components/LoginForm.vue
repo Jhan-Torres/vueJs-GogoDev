@@ -18,7 +18,10 @@
               Sign Up
             </RouterLink>
           </p>
-          <form class="space-y-4 md:space-y-6">
+          <form 
+            class="space-y-4 md:space-y-6"
+            id="login-form"
+          >
             <label 
               class="block mb-2 text-sm font-medium text-white"
             >
@@ -30,6 +33,7 @@
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
                 placeholder="example:name_007"
                 required="true"
+                autocomplete="off"
               >
             </label>
             <label 
