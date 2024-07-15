@@ -35,7 +35,7 @@ const loginUser = async () => {
 </script>
 
 <template>
-  <section class="bg-[#cecee2] height-fixed flex items-center">
+  <section class="height-fixed flex items-center">
     <div class="flex flex-col items-center justify-center w-full px-2 py-6 mx-auto">
       <div class="w-full rounded-lg shadow bg-gray-800 max-w-screen-sm">
         <div class="px-4 py-6 space-y-4 md:space-y-6 md:p-8">
