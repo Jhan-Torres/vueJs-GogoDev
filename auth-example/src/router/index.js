@@ -39,7 +39,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../components/LogInForm.vue'),
+      component: () => import('../views/LoginView.vue'),
       meta: {
         requireAuth: false,
       },
@@ -47,7 +47,7 @@ const router = createRouter({
     {
       path: '/signup',
       name: 'signup',
-      component: () => import('../components/SignUpForm.vue'),
+      component: () => import('../views/SignUpView.vue'),
       meta: {
         requireAuth: false,
       }
