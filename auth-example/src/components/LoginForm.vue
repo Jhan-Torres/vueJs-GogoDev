@@ -1,5 +1,35 @@
 <script setup>
+import { ref } from 'vue';
+import { useAuthStore } from '@/stores/auth';
+import { useFetch } from '@/composables/useFetch';
+import { useRouter } from 'vue-router';
 
+const user = ref({})
+const store = useAuthStore()
+const router = useRouter()
+
+const loginUser = async () => {
+  //validate fields
+  if(!(user.value.username && user.value.password)) {
+    return
+  }
+
+  const rawResponse = await useFetch('auth/login', {
+    method: 'POST',
+    body: JSON.stringify(user.value)
+  })
+
+  const response = await rawResponse
+
+  //auth error
+  if(!response.token) {
+    console.log("error");
+    return
+  }
+
+  store.setToken(response.token)
+  router.push({name: 'home'})
+}
 </script>
 
 <template>
@@ -34,6 +64,7 @@
                 placeholder="example:name_007"
                 required="true"
                 autocomplete="off"
+                v-model="user.username"
               >
             </label>
             <label 
@@ -46,10 +77,14 @@
                 id="password" 
                 placeholder="••••••••" 
                 class="border rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 text-white" 
-                required="true">
+                required="true"
+                v-model="user.password"
+              >
             </label>
-            <button 
-              class="w-full bg-[#4870A1] rounded-lg px-5 py-2.5">
+            <button
+              @click.prevent="loginUser"
+              class="w-full bg-[#4870A1] rounded-lg px-5 py-2.5"
+            >
               <span class="text-xl font-bold text-white">
                 Log In
               </span>

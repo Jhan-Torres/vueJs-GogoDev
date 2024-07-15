@@ -21,7 +21,9 @@ const registerUser = async () => {
 
   const response = await rawResponse
 
+  //auth error
   if(!response.id) {
+    console.log("error");
     return
   }
 
