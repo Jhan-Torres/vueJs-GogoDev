@@ -14,7 +14,8 @@ const loginUser = async () => {
     return
   }
 
-  const rawResponse = await useFetch('auth/login', {
+  //api endpoint "auth/login" has error, so i gonna use "users" endpoint
+  const rawResponse = await useFetch('users', {
     method: 'POST',
     body: JSON.stringify(user.value)
   })
@@ -22,12 +23,13 @@ const loginUser = async () => {
   const response = await rawResponse
 
   //auth error
-  if(!response.token) {
+  if(!response.id) {
     console.log("error");
     return
   }
 
-  store.setToken(response.token)
+  //static token due api
+  store.setToken('eyJhbGciOiJIUzI1NiIsInR')
   router.push({name: 'home'})
 }
 </script>
