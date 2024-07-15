@@ -16,7 +16,7 @@ onMounted(() => {
 
 <template>
   <section
-    class="flex flex-wrap justify-around"
+    class="flex flex-wrap justify-around bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
   >
     <ItemCard
       v-for="product in products"
