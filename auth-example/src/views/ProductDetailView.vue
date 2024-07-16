@@ -1,10 +1,16 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import { useCartStore } from '@/stores/cart';
 import { useFetch } from '@/composables/useFetch';
 
 const productId = useRoute().params.id;
+const cartStore = useCartStore();
 const product = ref({});
+
+const addToCart = (product) => {
+  cartStore.addProduct(product)
+}
 
 const getSingleProduct = async () => {
   const rawResponse = await useFetch(`products/${productId}`)
@@ -53,6 +59,7 @@ onMounted(() => {
       </p>
       <div class="flex flex-col justify-center items-center my-4">
         <button
+          @click="addToCart(product)"
           class="bg-[#688f99] text-[#000000] my-4 py-1.5 px-20 font-bold rounded-lg"
           >
           Add to cart
