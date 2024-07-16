@@ -19,7 +19,7 @@ onMounted(() => {
 
 <template>
   <section
-    class="bg-[#cecee2] p-2 height-fixed flex justify-around items-center flex-wrap"
+    class="p-2 height-fixed flex justify-around items-center flex-wrap"
   >
     <section
     >
@@ -38,7 +38,7 @@ onMounted(() => {
       </h1>
       <div class="flex justify-between items-center font-bold text-base my-5">
         <span
-          class="underline"
+          class="text-xl"
         >
           ${{ product.price }}
         </span>
