@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/auth';
 import { useFetch } from '@/composables/useFetch';
 import { useRouter } from 'vue-router';
 
-const store = useAuthStore()
+const authStore = useAuthStore()
 const user = ref({})
 const router = useRouter()
 
@@ -28,7 +28,7 @@ const registerUser = async () => {
   }
 
   //static token due api
-  store.setToken('eyJhbGciOiJIUzI1NiIsInR')
+  authStore.setToken('eyJhbGciOiJIUzI1NiIsInR')
   router.push({name: 'home'})
 }
 </script>
