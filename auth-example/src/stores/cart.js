@@ -10,13 +10,17 @@ export const useCartStore = defineStore('cart', () => {
     cart.value.push(product)
   }
 
-  const getTotal = () => {
+  // const deleteProduct = (id) => {
+  //   cart.value.splice()
+  // }
 
+  const getTotalPrice = () => {
+    
   }
 
   return {
     cart,
     addProduct,
-    getTotal,
+    getTotalPrice,
   }
 })
