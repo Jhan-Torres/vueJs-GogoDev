@@ -1,5 +1,5 @@
 <script setup>
-import ItemCard from '@/components/ItemCard.vue'
+import ProductCard from '@/components/ProductCard.vue'
 import { onMounted, ref } from 'vue';
 import { useFetch } from '@/composables/useFetch';
 
@@ -18,7 +18,7 @@ onMounted(() => {
   <section
     class="flex flex-wrap justify-around bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
   >
-    <ItemCard
+    <ProductCard
       v-for="product in products"
       :key="product.id"
       :item="product"
