@@ -22,6 +22,12 @@ onMounted(() => {
     <h1 class="text-4xl text-center font-semibold pb-4 mx-10 border-b-2 border-gray-200">
       My cart ({{ cartStore.cart.length }})
     </h1>
+    <RouterLink
+      :to="{ name: 'products' }"
+      class="mx-auto"
+    >
+      Go to products page
+    </RouterLink>
     <div class="flex flex-wrap justify-center mt-4 md:justify-evenly">
       <CartCard
         v-for="item in items"
