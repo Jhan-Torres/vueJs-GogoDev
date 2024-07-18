@@ -45,9 +45,10 @@ onMounted(() => {
     </div>
     <article
       class="bg-gray-400 my-4 rounded-md px-8 py-4 min-w-[300px] max-w-[500px] mx-auto shadow-md"
+      v-if="cartStore.cart.length != 0"
     >
       <p class="uppercase text-xl text-center border-b-2 border-gray-500">
-        Total: <span class="font-bold">$300</span>
+        Total: <strong>{{ cartStore.totalPrice }}</strong>
       </p>
       <div class="flex items-center mt-2 justify-evenly">
         <label class="flex items-center">
