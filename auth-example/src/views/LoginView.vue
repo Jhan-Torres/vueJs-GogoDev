@@ -7,7 +7,3 @@ import LogInForm from '@/components/LogInForm.vue';
     <LogInForm />
   </div>
 </template>
-
-<style scoped>
-
-</style>
