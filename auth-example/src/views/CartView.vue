@@ -19,7 +19,7 @@ onMounted(() => {
   <section
     class="bg-waves p-3 height-fixed text-2xl"
   >
-    <h1 class="text-4xl text-center font-semibold pb-4 mx-10 border-b-2 border-gray-200 text-white">
+    <h1 class="text-4xl text-center font-semibold pb-4 mx-20 border-b-2 border-gray-200 text-white">
       My cart ({{ cartStore.cart.length }})
     </h1>
     <div
@@ -31,7 +31,7 @@ onMounted(() => {
       </h2>
       <RouterLink
         :to="{ name: 'products' }"
-        class="text-xl first-letter:uppercase text-white hover:bg-[#5084C4] font-bold px-10 py-4 bg-[#415B7F] rounded-lg"
+        class="text-xl first-letter:uppercase text-white hover:bg-[#5084C4] hover:scale-105 font-bold px-10 py-4 bg-[#415B7F] rounded-lg duration-100"
       >
         view products
       </RouterLink>
