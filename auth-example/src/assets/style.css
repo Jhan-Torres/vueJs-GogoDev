@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-black-and-white {
+  background-image: url('../../public/img/background/black-and-white.svg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg-waves {
+  background-image: url('../../public/img/background/waves.svg');
+  background-size: cover;
+  background-attachment: fixed;
+}
