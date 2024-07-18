@@ -23,7 +23,7 @@ defineProps({
     <div class="px-2 py-3">
       <div class="flex justify-end">
         <span 
-          class="text-[#f2ece4] bg-[#363234] px-4 py-0.5 rounded-xl font-semibold"
+          class="text-[#f2ece4] bg-[#313239] text-sm px-3 py-0.5 rounded-lg font-semibold"
         >
           {{ item.category }}
         </span>
