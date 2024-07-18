@@ -21,7 +21,12 @@ defineProps({
       >
     </div>
     <div class="px-2 py-3">
-      <div class="flex justify-end">
+      <div class="flex justify-between items-center">
+        <span 
+          class="text-orange-400 font-bold text-lg"
+        >
+          ${{ item.price }}
+        </span>
         <span 
           class="text-[#f2ece4] bg-[#313239] text-sm px-3 py-0.5 rounded-lg font-semibold"
         >
