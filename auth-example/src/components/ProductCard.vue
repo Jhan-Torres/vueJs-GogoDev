@@ -45,7 +45,7 @@ defineProps({
           </span>
         </RouterLink>
         <button
-          class="bg-[#5084C4] py-1.5 rounded-md"
+          class="bg-[#5084C4] py-1.5 rounded-md hover:bg-[#70a2df] hover:scale-105 duration-150"
         >
           Add to cart
         </button>
