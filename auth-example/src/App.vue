@@ -43,9 +43,26 @@ import { RouterLink, RouterView } from 'vue-router'
   </main>
 
   <footer
-    class="bg-[#1F2D40] h-14 text-gray-100 flex items-center justify-center"
+    class="bg-[#1F2D40] h-20 text-gray-100 flex items-center justify-center"
   >
-    <p>By <a href="https://fakestoreapi.com/docs" target="_blank" class="underline">fakestoreapi</a></p>
+    <p class="text-sm md:text-lg">
+      Supported by 
+      <a 
+        href="https://fakestoreapi.com/docs" 
+        target="_blank" 
+        class="text-blue-400 font-bold"
+      >
+        fakeStoreApi
+      </a> 
+      |
+      <a 
+        href="https://haikei.app/"
+        target="_blank" 
+        class="text-blue-400 font-bold"
+      >
+        Haikei
+      </a>
+    </p>
   </footer>
 </template>
 
