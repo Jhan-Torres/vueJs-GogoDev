@@ -17,9 +17,9 @@ onMounted(() => {
 
 <template>
   <section
-    class="bg-[#cecee2] p-3 height-fixed text-2xl"
+    class="bg-waves p-3 height-fixed text-2xl"
   >
-    <h1 class="text-4xl text-center font-semibold pb-4 mx-10 border-b-2 border-gray-200">
+    <h1 class="text-4xl text-center font-semibold pb-4 mx-10 border-b-2 border-gray-200 text-white">
       My cart ({{ cartStore.cart.length }})
     </h1>
     <div
@@ -27,13 +27,13 @@ onMounted(() => {
       class="flex flex-col justify-center items-center"
     >
       <h2 class="my-10 text-4xl text-red-400 font-bold">
-        Nothing to see
+        Nothing to see yet!
       </h2>
       <RouterLink
         :to="{ name: 'products' }"
-        class="text-lg font-bold px-10 py-1.5 bg-[#5084C4] rounded-lg"
+        class="text-xl first-letter:uppercase text-white hover:bg-[#5084C4] font-bold px-10 py-4 bg-[#415B7F] rounded-lg"
       >
-        Go to products page
+        view products
       </RouterLink>
     </div>
     <div class="flex flex-wrap justify-center mt-4 md:justify-evenly">
