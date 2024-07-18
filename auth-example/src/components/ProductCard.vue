@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+
 defineProps({
   item: {
     type: Object,
@@ -31,17 +33,22 @@ defineProps({
       >
         {{ item.title }}
       </h2>
-      <div class="flex justify-center">
+      <div class="flex flex-col justify-center space-y-2 text-lg font-semibold">
         <RouterLink
           :to="{ name: 'product-detail', params: { id: item.id } }"
-          class="bg-[#4A1F43] py-2 px-20 hover:bg-[#5f2c57] hover:scale-105 duration-150 rounded-md"
+          class="bg-[#4A1F43] py-1.5 px-20 hover:bg-[#5f2c57] hover:scale-105 duration-150 rounded-md"
         >
           <span 
-            class="text-white font-bold tracking-wide"
+            class="text-white tracking-wide"
           >
             Details
           </span>
         </RouterLink>
+        <button
+          class="bg-[#5084C4] py-1.5 rounded-md"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   </section>
