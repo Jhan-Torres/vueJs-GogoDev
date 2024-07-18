@@ -44,12 +44,12 @@ onMounted(() => {
       </h1>
       <div class="flex justify-between items-center font-bold text-base my-5">
         <span
-          class="text-xl"
+          class="text-xl text-orange-600 font-bold"
         >
           ${{ product.price }}
         </span>
         <span
-          class="bg-[#325068] text-[#f4b346] py-0.5 px-5 rounded-lg"
+          class="bg-[#325068] text-[#f2ece4] py-0.5 px-5 rounded-lg"
         >
           {{ product.category }}
         </span>
@@ -60,8 +60,8 @@ onMounted(() => {
       <div class="flex flex-col justify-center items-center my-4">
         <button
           @click="addToCart(product)"
-          class="bg-[#688f99] text-[#000000] my-4 py-1.5 px-20 font-bold rounded-lg"
-          >
+          class="bg-[#5084C4] my-4 py-1.5 px-20 hover:bg-[#70a2df] hover:scale-105 duration-150 font-bold rounded-lg"
+        >
           Add to cart
         </button>
         <RouterLink
