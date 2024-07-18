@@ -72,6 +72,6 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 .height-fixed {
-  min-height: calc(100vh - 136px);
+  min-height: calc(100vh - 160px);
 }
 </style>
